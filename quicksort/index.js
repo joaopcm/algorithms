@@ -3,9 +3,13 @@ function quicksort(array) {
     return array;
   }
 
-  const pivot = array[0];
-  const lower = array.slice(1).filter((el) => el <= pivot);
-  const higher = array.slice(1).filter((el) => el > pivot);
+  const pivotIndex = Math.floor(Math.random() * array.length);
+  const pivot = array[pivotIndex];
+  array.splice(pivotIndex, 1);
+
+  const lower = array.filter((el) => el <= pivot);
+  const higher = array.filter((el) => el > pivot);
+
   return quicksort(lower).concat([pivot], quicksort(higher));
 }
 
